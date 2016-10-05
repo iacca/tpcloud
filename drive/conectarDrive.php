@@ -6,8 +6,8 @@ require_once "google-api-php-client/src/Google/Service/Drive.php";
 function getClient(){
     $client = new Google_Client();
     // Get your credentials from the console
-    $client->setClientId('1082901596035-nt366r17h3lo51lhktdgukmjg5qttgd7.apps.googleusercontent.com');
-    $client->setClientSecret('XGNfTz9llyrGg4PSVBCP_m1z');
+    $client->setClientId('1082901596035-apidufuh42kskcccb7e74t9vtcpambd0.apps.googleusercontent.com');
+    $client->setClientSecret('C4WvvAer-u6LB9ZD5VMijd0S');
     $client->setRedirectUri('http://'.$_SERVER['HTTP_HOST'].'/drive/listar_archivos.php');
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
     
