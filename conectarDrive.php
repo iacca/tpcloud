@@ -8,7 +8,7 @@ function getClient(){
     // Get your credentials from the console
     $client->setClientId('1082901596035-nt366r17h3lo51lhktdgukmjg5qttgd7.apps.googleusercontent.com');
     $client->setClientSecret('XGNfTz9llyrGg4PSVBCP_m1z');
-    $client->setRedirectUri('http://'.$_SERVER['HTTP_HOST'].'/ejemplo/listar_archivos.php');
+    $client->setRedirectUri('http://'.$_SERVER['HTTP_HOST'].'/drive/listar_archivos.php');
     $client->setScopes(array('https://www.googleapis.com/auth/drive'));
     
     return $client;
