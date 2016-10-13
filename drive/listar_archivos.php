@@ -9,6 +9,7 @@ if (isset($_SESSION['token'])) {
     $client = authenticate($client, $_SESSION['token']);
     
     print "<a class='logout' href='index.php?logout=1'>Logout</a>";
+    print "<a class='newDoc' href='nuevoDocumento.php'>Nuevo Documento</a>";
 
     $service = new Google_Service_Drive($client);
     $results = $service->files->listFiles(array('q' => "mimeType != 'application/vnd.google-apps.folder'"));
