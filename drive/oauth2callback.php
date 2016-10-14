@@ -1,10 +1,10 @@
 <?php
-
 require_once 'conectarDrive.php';
 session_start();
 $client = getClient();
 
 if (isset($_GET['code'])) {
+
     $client->authenticate($_GET['code']);
     $_SESSION['token'] = $client->getAccessToken();
     $_SESSION['code'] = $_GET['code'];
