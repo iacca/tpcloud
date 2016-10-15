@@ -6,7 +6,7 @@
         <tr>
             <td>{$permission->emailAddress}</td>
             <td>
-                <a class="button" href='manageFile.php?fileId='>Descompartir</a>
+                <a class="button" href='manageFile.php'>Descompartir</a>
             </td>
         </tr>
     {/foreach}
