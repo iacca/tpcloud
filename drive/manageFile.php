@@ -1,23 +1,23 @@
 <?php
-
 require_once 'conectarDrive.php';
+require_once 'SetupSmarty.php';
 session_start();
 $client = getClient();
 if (isset($_SESSION['token']) && isset($_GET['fileId'])) {
 
     $client = authenticate($client, $_SESSION['token']);
+    if (!$client->isAccessTokenExpired()) {
     $fileId = $_GET['fileId'];
-    print "<a class='logout' href='index.php?logout=1'>Logout</a>";
-    print "<a class='listar' href='listar_archivos.php'>Volver</a>";
-
+    
     $service = new Google_Service_Drive($client);
-    $results = $service->permissions->listPermissions($fileId);
-    
-    
-    if (count($results->getItems()) == 0) {
-        print "No hay permisos.\n";
-    } else {
-    print "si hay permisos.\n";
+    $file = $service->files->get($fileId);
+    $setup = getSmarty();
+    $setup->assign('lugar','permisos');
+    $setup->display('backend.tpl'); 
+
+    }else{
+         unset($_SESSION['token']);
+        header('Location: index.php');
     }
     
 } else {

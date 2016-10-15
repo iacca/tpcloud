@@ -3,7 +3,7 @@ function validarNombreDocumento()
     valido = false;
     if (validarNombre())
     {
-        
+        valido = true;
     }
     return valido;
 }
@@ -15,6 +15,7 @@ function validarNombre()
     {
         alert("Ingrese nombre para el documento");
         inputTitulo.focus();
+
         return false;
     } else
     {

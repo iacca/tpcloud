@@ -11,8 +11,8 @@ function getClient() {
     $client->setClientSecret('JO0UEs_3LRrRot52XJxhZ01v');
     $client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/drive/oauth2callback.php');
     $client->setScopes(array(
-	'https://www.googleapis.com/auth/drive',
-	'https://www.googleapis.com/auth/userinfo.email'));
+        'https://www.googleapis.com/auth/drive',
+        'https://www.googleapis.com/auth/userinfo.email'));
 
     return $client;
 }
@@ -26,14 +26,13 @@ function listarArchivos($client) {
     set_time_limit(0);
     $userInfo = getUserInfo($client);
     $emailAddress = $userInfo->getEmail();
-    
+
     $service = new Google_Service_Drive($client);
-    $results = $service->files->listFiles(array('q' => "mimeType != 'application/vnd.google-apps.folder' and ( '$emailAddress' in owners or '$emailAddress' in writers)" ));
+    $results = $service->files->listFiles(array('q' => "mimeType != 'application/vnd.google-apps.folder' and ( '$emailAddress' in owners or '$emailAddress' in writers)"));
     $listFiles = array();
     foreach ($results->getItems() as $file) {
-        $newFile = new LocalFile($file->getTitle(), $file->getId(), $file->modifiedTime);
-
-        $newFile->permissions = listarPermisos($client, $file->getId());
+        $date = new DateTime($file->getModifiedDate());
+        $newFile = new LocalFile($file->getTitle(), $file->getId(), $date->format('Y-m-d H:i:s'));
         array_push($listFiles, $newFile);
     }
 
@@ -45,7 +44,7 @@ function listarPermisos($client, $fileId) {
     $results = $service->permissions->listPermissions($fileId);
     $listPermissions = array();
     foreach ($results->getItems() as $permission) {
-        if ($permission->role != 'owner'){
+        if ($permission->role != 'owner') {
             array_push($listPermissions, $permission);
         }
     }
@@ -54,17 +53,16 @@ function listarPermisos($client, $fileId) {
 }
 
 function getUserInfo($client) {
-	$userInfoService = new Google_Service_Oauth2($client);
-	try {
-		$userInfo = $userInfoService->userinfo->get();
+    $userInfoService = new Google_Service_Oauth2($client);
+    try {
+        $userInfo = $userInfoService->userinfo->get();
 
-		if ($userInfo != null && $userInfo->getId() != null) {
-			return $userInfo;
-		} else {
-			echo "No user ID";
-		}
-	} catch (Exception $e) {
-		print 'An error occurred: ' . $e->getMessage();
-	}
-	
+        if ($userInfo != null && $userInfo->getId() != null) {
+            return $userInfo;
+        } else {
+            echo "No user ID";
+        }
+    } catch (Exception $e) {
+        print 'An error occurred: ' . $e->getMessage();
+    }
 }

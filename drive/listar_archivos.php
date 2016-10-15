@@ -1,25 +1,22 @@
 <?php
 require_once 'conectarDrive.php';
 require_once 'LocalFile.php';
+require_once 'SetupSmarty.php';
 session_start();
-$client = getClient();
-if (isset($_SESSION['token'])) {
-    $client = authenticate($client, $_SESSION['token']);
-    
-    print "<a class='logout' href='index.php?logout=1'>Logout</a>";
-    print "<a class='newDoc' href='nuevoDocumento.php'>Nuevo Documento</a>";
 
-    $results = listarArchivos($client);
-    if (count($results) == 0) {
-        print "No files found.\n";
-    } else {
-        print "<table border='1'><thead><th>Archivo</th><th>Operación</th></thead>";
-        foreach ($results as $file) {
-            printf("<tr><td>%s</td><td><a class='newDoc' href='manageFile.php?fileId=%s'>Permisos</a></td></tr>", $file->fileName,$file->fileId);
-            
-        }
-        print "</table>";
-    }
+if (isset($_SESSION['token'])) {
+    $client = authenticate(getClient(), $_SESSION['token']);
+    if (!$client->isAccessTokenExpired()) {
+    $files = listarArchivos($client);
+    $setup = getSmarty();
+    
+    $setup->assign('files',$files);
+    $setup->assign('lugar','lista');
+    $setup->display('backend.tpl'); 
+    }else{
+         unset($_SESSION['token']);
+        header('Location: index.php');
+    }    
 } else {
     header('Location: index.php');
 }

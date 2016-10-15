@@ -2,13 +2,13 @@
 class LocalFile {
     public $fileName;
     public $fileId;
-    public $dateLastModified;
+    public $modifiedDate;
     public $permissions;
     
     public function __construct($fileName,$fileId,$dateLastModified){
         $this->fileName=$fileName;
         $this->fileId=$fileId;
-        $this->dateLastModified=$dateLastModified;
+        $this->modifiedDate=$dateLastModified;
     }
 }
 ?>
