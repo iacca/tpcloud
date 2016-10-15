@@ -16,8 +16,10 @@
 {include file="nav_bar.tpl"}
 {if $lugar eq 'lista'}
     {include file="table_archivos.tpl"}
- {elseif $lugar eq 'newDoc'}
+{elseif $lugar eq 'newDoc'}
  {include file="nuevo_documento.tpl"}
+ {elseif $lugar eq 'permisos'}
+     {include file="table_permissions.tpl"}
  {/if}
 </div>
 </body>

@@ -35,7 +35,6 @@ function listarArchivos($client) {
         $newFile = new LocalFile($file->getTitle(), $file->getId(), $date->format('Y-m-d H:i:s'));
         array_push($listFiles, $newFile);
     }
-
     return $listFiles;
 }
 
