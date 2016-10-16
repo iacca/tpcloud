@@ -60,3 +60,11 @@ li a:hover:not(.active) {
     color: white;
     font-weight: bold;
 }
+
+.tt_perm {
+    float: left;
+}
+
+.compartir{
+    float: right;
+}

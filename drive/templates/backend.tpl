@@ -20,6 +20,7 @@
  {include file="nuevo_documento.tpl"}
  {elseif $lugar eq 'permisos'}
      {include file="table_permissions.tpl"}
+     {include file="compartir_form.tpl"}
  {/if}
 </div>
 </body>

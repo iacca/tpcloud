@@ -65,3 +65,54 @@ function getUserInfo($client) {
         print 'An error occurred: ' . $e->getMessage();
     }
 }
+
+function shareFileId($client, $fileId, $email) {
+$driveService = new Google_Service_Drive($client);    
+insertPermission($driveService, $fileId, $email, 'user', 'writer');
+}
+
+/**
+ * Insert a new permission.
+ *
+ * @param Google_Service_Drive $service Drive API service instance.
+ * @param String $fileId ID of the file to insert permission for.
+ * @param String $value User or group e-mail address, domain name or NULL for
+                       "default" type.
+ * @param String $type The value "user", "group", "domain" or "default".
+ * @param String $role The value "owner", "writer" or "reader".
+ * @return Google_Servie_Drive_Permission The inserted permission. NULL is
+ *     returned if an API error occurred.
+ */
+function insertPermission($service, $fileId, $value, $type, $role) {
+  $newPermission = new Google_Service_Drive_Permission();
+  $newPermission->setValue($value);
+  $newPermission->setType($type);
+  $newPermission->setRole($role);
+  try {
+    return $service->permissions->insert($fileId, $newPermission);
+  } catch (Exception $e) {
+    print "An error occurred: " . $e->getMessage();
+  }
+  return NULL;
+}
+
+function unSharedFileId($client,$fileId,$permissionId){
+ $driveService = new Google_Service_Drive($client); 
+ removePermission($driveService, $fileId, $permissionId);
+}
+
+/**
+ * Remove a permission.
+ *
+ * @param Google_Service_Drive $service Drive API service instance.
+ * @param String $fileId ID of the file to remove the permission for.
+ * @param String $permissionId ID of the permission to remove.
+ */
+function removePermission($service, $fileId, $permissionId) {
+  try {
+    $service->permissions->delete($fileId, $permissionId);
+  } catch (Exception $e) {
+    print "An error occurred: " . $e->getMessage();
+  }
+}
+

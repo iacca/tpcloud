@@ -2,6 +2,7 @@
 require_once 'conectarDrive.php';
 session_start();
 if (isset($_SESSION['token'])) {
+    unset($_SESSION['file']);
     $client = authenticate(getClient(), $_SESSION['token']);
     if (!$client->isAccessTokenExpired()) {
 
