@@ -16,6 +16,8 @@
 {include file="nav_bar.tpl"}
 {if $lugar eq 'lista'}
     {include file="table_archivos.tpl"}
+{elseif $lugar eq 'menu'}
+    <div class="nombre"> <p>Hola, {$nombre}</p> </div>
 {elseif $lugar eq 'newDoc'}
  {include file="nuevo_documento.tpl"}
  {elseif $lugar eq 'permisos'}

@@ -4,8 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Iacca/Desktop/drive/drive/templates/table_permissions.tpl</file>
+            <file>file:/C:/Users/Iacca/Desktop/drive/drive/nuevoDocumento.php</file>
+            <file>file:/C:/Users/Iacca/Desktop/drive/drive/templates/table_archivos.tpl</file>
+            <file>file:/C:/Users/Iacca/Desktop/drive/drive/newDoc.php</file>
             <file>file:/C:/Users/Iacca/Desktop/drive/drive/manageFile.php</file>
             <file>file:/C:/Users/Iacca/Desktop/drive/drive/conectarDrive.php</file>
+            <file>file:/C:/Users/Iacca/Desktop/drive/drive/unSharedFile.php</file>
+            <file>file:/C:/Users/Iacca/Desktop/drive/drive/shareFile.php</file>
+            <file>file:/C:/Users/Iacca/Desktop/drive/drive/listar_archivos.php</file>
             <file>file:/C:/Users/Iacca/Desktop/drive/drive/templates/backend.tpl</file>
         </group>
     </open-files>

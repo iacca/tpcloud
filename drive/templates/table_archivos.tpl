@@ -1,3 +1,4 @@
+<div class="tab_ar" style="overflow-x:auto;">
 <table border='1'><thead><th>Nombre Archivo</th><th>Fecha Ultima Modificacion</th><th></th></thead>
     {foreach from=$files item=file}
         <tr>
@@ -9,3 +10,4 @@
         </tr>
     {/foreach}
 </table>
+</div> 

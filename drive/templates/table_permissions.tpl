@@ -1,6 +1,6 @@
 <div class="tt_perm" >
 <table border='1'><thead><th>Email</th><th></th></thead>
-<p>Nombre del archivo : {$nombre}</p>
+<p>Nombre del archivo : <b>{$nombre}</b></p>
     {if $masDeCero}
     {foreach from=$permissions item=permission}
         <tr>
