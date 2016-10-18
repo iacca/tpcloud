@@ -6,7 +6,7 @@
         <tr>
             <td>{$permission->emailAddress}</td>
             <td>
-                <a class="button" href="unSharedFile.php?permissionId={$permission->getId()}&email={$permission->emailAddress}">Descompartir</a>
+                <a class="button" href="unSharedFile.php?permissionId={$permission->getId()}">Descompartir</a>
             </td>
         </tr>
     {/foreach}
