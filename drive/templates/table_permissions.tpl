@@ -5,8 +5,8 @@
     {foreach from=$permissions item=permission}
         <tr>
             <td>{$permission->emailAddress}</td>
-            <td>
-                <a class="button" href="unSharedFile.php?permissionId={$permission->getId()}">Descompartir</a>
+            <td height="50">
+                <a class="button" style="text-decoration:none" href="unSharedFile.php?permissionId={$permission->getId()}">Descompartir</a>
             </td>
         </tr>
     {/foreach}
