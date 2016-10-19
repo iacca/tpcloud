@@ -4,8 +4,9 @@
         <tr>
             <td>{$file->fileName}</td>
             <td>{$file->modifiedDate}</td>
-            <td>
-                <a class="button" href='manageFile.php?fileId={$file->fileId}'>Compartir..</a>
+            <td height="50">
+                <a class="button" style="text-decoration:none" href='manageFile.php?fileId={$file->fileId}'>Compartir..</a>
+                <a class="button" style="text-decoration:none" href='downloadPDF.php?fileId={$file->fileId}'>Descargar en PDF</a>
             </td>
         </tr>
     {/foreach}

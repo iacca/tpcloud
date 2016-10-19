@@ -26,7 +26,6 @@ function listarArchivos($client) {
     set_time_limit(0);
     $userInfo = getUserInfo($client);
     $emailAddress = $userInfo->getEmail();
-
     $service = new Google_Service_Drive($client);
     $results = $service->files->listFiles(array('q' => "mimeType != 'application/vnd.google-apps.folder' and ( '$emailAddress' in owners or '$emailAddress' in writers)"));
     $listFiles = array();
@@ -116,3 +115,27 @@ function removePermission($service, $fileId, $permissionId) {
   }
 }
 
+/**
+ * Download a file's content.
+ *
+ * @param Google_Servie_Drive $service Drive API service instance.
+ * @param Google_Servie_Drive_DriveFile $file Drive File instance.
+ * @return String The file's content if successful, null otherwise.
+ */
+function downloadFile($client, $file) {
+  $service = new Google_Service_Drive($client);
+  $downloadUrl = $file->getExportLinks()['application/pdf'];
+  if ($downloadUrl) {
+    $request = new Google_Http_Request($downloadUrl, 'GET', null, null);
+    $httpRequest = $service->getClient()->getAuth()->authenticatedRequest($request);
+    if ($httpRequest->getResponseHttpCode() == 200) {
+      return $httpRequest->getResponseBody();
+    } else {
+      // An error occurred.
+      return null;
+    }
+  } else {
+    // The file doesn't have any content stored on Drive.
+    return null;
+  }
+}

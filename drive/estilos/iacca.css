@@ -50,7 +50,7 @@ li a:hover:not(.active) {
 }
 
 .button {
-    display: block;
+    display: inline;
     width: 115px;
     height: 25px;
     background: #4E9CAF;
@@ -59,7 +59,9 @@ li a:hover:not(.active) {
     border-radius: 5px;
     color: white;
     font-weight: bold;
-}
+    margin: 20px;
+    border-color: black;
+}   
 
 .tt_perm {
     float: left;
