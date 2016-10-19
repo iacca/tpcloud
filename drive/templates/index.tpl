@@ -2,6 +2,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="http://icons.iconarchive.com/icons/crountch/one-piece-jolly-roger/16/Luffys-flag-icon.png" />
 <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
 <meta name="Keywords" content="integracion, google, drive" />
 <meta name="Description" content="App de Integraci&oacute;n con Google Drive" />
